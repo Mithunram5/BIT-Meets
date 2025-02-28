@@ -9,6 +9,8 @@ import LoginPage from './pages/LoginPage';
 import MeetingPage from './pages/MeetingPage';
 import Database from './pages/Database';
 import Template from './pages/Template';
+import Reports from './pages/Reports';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -41,7 +43,7 @@ function App() {
                   <Route path="/meeting" element={<MeetingPage />} />
                   <Route path="/database" element={<Database />} />
                   <Route path="/template" element={<Template/>} />
-                  <Route path="/reports" element={<div>Reports</div>} />
+                  <Route path="/reports" element={<Reports />} />
                   <Route path="/notifications" element={<div>Notifications</div>} />
                   <Route path="/support" element={<div>Support</div>} />
                   <Route path="/logout" element={<div>Logout</div>} />
