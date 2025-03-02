@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { format, isSameDay, startOfMonth, endOfMonth, eachDayOfInterval, subDays, addDays, subMonths, addMonths, isSameMonth } from "date-fns";
 import "../styles/DashboardRightPanel.css";
+import CreateMeeting from "../pages/CreateMeeting";
+import Template1 from "../components/template1";
 
 const generateTimeSlots = (meetings) => {
   const slots = [];
@@ -53,6 +55,10 @@ const DashboardRightPanel = () => {
       borderColor: 'border-orange-500'
     }
   ]);
+  const [showTemplateOverlay, setShowTemplateOverlay] = useState(false);
+  const [showTemplate, setShowTemplate] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState("");
+  const [showCreateMeeting, setShowCreateMeeting] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -141,15 +147,48 @@ const calculateCurrentTimePosition = () => {
     setSelectedDate(addMonths(selectedDate, 1));
   };
 
+  const handleCreateMeetingClick = () => {
+    setShowCreateMeeting(true);
+  };
+
+  const handleTemplateSelect = (selectedTemplate) => {
+    setShowCreateMeeting(false);
+    navigate('/template1', { state: { selectedTemplate } });
+  };
+
   const days = getCalendarDays(selectedDate);
 
   return (
     <>
+      {/* Template Selection Overlay */}
+      {showCreateMeeting && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999
+          }}
+        >
+          <CreateMeeting
+            onUseTemplate={handleTemplateSelect}
+            onClose={() => setShowCreateMeeting(false)}
+          />
+        </div>
+      )}
+
       <div className="right-panel">
         {/* Create Meeting Button */}
         <div className="create-meeting-section">
-          <button className="create-meeting-button" onClick={() => navigate('/create-meeting')}>
-            <span className="plus-icon">+</span> Create Meeting
+          <button className="create-meeting-button" onClick={handleCreateMeetingClick}>
+            <i className="fi fi-rr-plus"></i>
+            Create Meeting
           </button>
         </div>
 

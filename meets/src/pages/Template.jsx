@@ -1116,16 +1116,8 @@ export default function Template() {
     </TableCell>
   );
 
-  // Add cancel navigation handler
-  const handleCancel = () => {
-    const confirmCancel = window.confirm('Are you sure you want to cancel? All changes will be lost.');
-    if (confirmCancel) {
-      navigate('/database'); // or wherever you want to navigate
-    }
-  };
-
   return (
-    <div className="page-container">
+    <div className="cm-container"> {/* Change from page-container to cm-container */}
       {/* Show success notification when showSuccess is true */}
       {showSuccess && <TemplateSuccessNotification />}
 
@@ -1141,8 +1133,8 @@ export default function Template() {
           <button className="cm-btn cm-preview-btn" onClick={handlePreviewToggle}>
             <i className="fi fi-rr-computer"></i> {isPreview ? 'Edit' : 'Preview'}
           </button>
-          <button className="cm-btn cm-draft-btn" onClick={handleCancel}>
-            <i className="fi fi-rr-document"></i> Cancel
+          <button className="cm-btn cm-draft-btn">
+            <i className="fi fi-rr-document"></i> Save as Draft
           </button>
           <button className="cm-btn cm-create-btn" onClick={handleCreateTemplate}>
             <i className="fi fi-rr-confetti"></i> Create Template
@@ -1150,7 +1142,8 @@ export default function Template() {
         </div>
       </div>
 
-      <div className="document-container">
+      {/* Main content container - update width and padding to match CreateMeeting */}
+      <div className="cm-tab-content"> {/* Change from document-container to cm-tab-content */}
         {/* Institution Header */}
         <div className="document-header">
           <img src={bheader} alt="Bannari Amman Institute of Technology" className="header" style={{ width: '100%' }} />

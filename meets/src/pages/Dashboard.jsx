@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { useNavigate } from 'react-router-dom';
 import "../styles/Dashboard.css";
 import DashboardRightPanel from "../components/DashboardRightPanel";
-import noTodoImage from "../assets/nomeeting.png"; // Ensure the path is correct
+import noTodoImage from "../assets/nomeetings.png"; // Ensure the path is correct
 import profileImage from "../assets/profileimage.png"; // Ensure the path is correct
 
 // Dummy data for meetings

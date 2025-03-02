@@ -5,12 +5,12 @@
   padding: 1.5rem;
 }
 
-.page-container {
+.cm-container {
   min-height: 100vh;
   padding: 20px;
 }
 
-.document-container {
+.cm-tab-content {
   max-width: 90%;
   padding: 40px;
   margin: 0 auto;
