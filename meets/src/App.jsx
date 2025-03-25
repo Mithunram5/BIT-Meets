@@ -10,7 +10,8 @@ import MeetingPage from './pages/MeetingPage';
 import Database from './pages/Database';
 import Template from './pages/Template';
 import Template1 from "./components/template1";
-import Reports from './pages/Reports'; // Add this import
+import Reports from './pages/Reports';
+import Calendar from './pages/Calendar';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,10 +46,11 @@ function App() {
                   <Route path="/database" element={<Database />} />
                   <Route path="/template" element={<Template />} />
                   <Route path="/template1" element={<Template1 />} />
-                  <Route path="/reports" element={<Reports />} /> {/* Update this line */}
+                  <Route path="/reports" element={<Reports />} />
                   <Route path="/notifications" element={<div>Notifications</div>} />
                   <Route path="/support" element={<div>Support</div>} />
                   <Route path="/logout" element={<div>Logout</div>} />
+                  <Route path="/calendar" element={<Calendar />} />
                   <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
               </div>

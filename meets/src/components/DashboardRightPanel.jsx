@@ -156,6 +156,10 @@ const calculateCurrentTimePosition = () => {
     navigate('/template1', { state: { selectedTemplate } });
   };
 
+  const handleViewMoreCalendar = () => {
+    navigate('/calendar'); // This will navigate to the calendar page
+  };
+
   const days = getCalendarDays(selectedDate);
 
   return (
@@ -197,9 +201,15 @@ const calculateCurrentTimePosition = () => {
           <div className="calendar">
             <div className="calendar-header">
               <h2>{format(selectedDate, 'dd MMM yyyy')}</h2>
-              <div className="calendar-nav">
-                <button onClick={handlePrevMonth}><i className="fi fi-rr-caret-left"></i></button>
-                <button onClick={handleNextMonth}><i className="fi fi-rr-caret-right"></i></button>
+              <div className="calendar-actions">
+                <div className="calendar-nav">
+                  <button onClick={handlePrevMonth}><i className="fi fi-rr-caret-left"></i></button>
+                  <button onClick={handleNextMonth}><i className="fi fi-rr-caret-right"></i></button>
+                </div>
+                <button className="view-more-btn" onClick={handleViewMoreCalendar}>
+                  <i className="fi fi-rr-calendar"></i>
+                  <span>View More</span>
+                </button>
               </div>
             </div>
             <div className="calendar-grid">
